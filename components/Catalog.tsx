@@ -21,9 +21,23 @@ export default function Catalog({ products, categories, hasCart = false, branche
         backgroundColor: 'var(--section-mid)',
         padding: 'clamp(5rem, 10vw, 8rem) 2rem',
         scrollMarginTop: '80px',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      {/* Seigaiha muy sutil como textura de fondo */}
+      <div
+        aria-hidden="true"
+        className="seigaiha-pattern"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.07,
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
         {/* Section header */}
         <RevealOnScroll>
           <div style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
@@ -31,11 +45,11 @@ export default function Catalog({ products, categories, hasCart = false, branche
               className="reveal"
               style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.675rem',
+                fontSize: '0.625rem',
                 fontWeight: 400,
-                letterSpacing: '0.3em',
+                letterSpacing: '0.30em',
                 textTransform: 'uppercase',
-                color: 'var(--wood)',
+                color: '#c9922a',
                 marginBottom: '1.25rem',
               }}
             >
@@ -48,20 +62,20 @@ export default function Catalog({ products, categories, hasCart = false, branche
                 fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                 fontWeight: 300,
                 lineHeight: 1.05,
-                color: 'var(--foreground)',
+                color: '#f4f0e8',
                 letterSpacing: '-0.025em',
                 maxWidth: '600px',
               }}
             >
-              Hecho para{' '}
+              Hecho con{' '}
               <em
                 style={{
                   fontStyle: 'italic',
-                  color: 'var(--wood)',
+                  color: '#c9922a',
                   fontWeight: 300,
                 }}
               >
-                compartir.
+                precisión.
               </em>
             </h2>
           </div>

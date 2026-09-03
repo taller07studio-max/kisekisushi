@@ -11,13 +11,13 @@ type Props = {
 }
 
 const ChevronRight = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <polyline points="9 18 15 12 9 6" />
   </svg>
 )
 
 const CloseIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 )
@@ -34,9 +34,9 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'oklch(0.10 0.02 255 / 0.65)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
+          background: 'rgba(0,0,0,0.85)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           zIndex: 1001,
         }}
       />
@@ -52,8 +52,9 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
           bottom: 0,
           left: 0,
           right: 0,
-          background: 'var(--background)',
-          borderRadius: '24px 24px 0 0',
+          background: '#0f0e0c',
+          borderRadius: '14px 14px 0 0',
+          borderTop: '1px solid rgba(201,146,42,0.28)',
           zIndex: 1002,
           padding: '2.5rem 1.5rem 3rem',
           animation: 'waSheetUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) both',
@@ -68,16 +69,16 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
             position: 'absolute',
             top: '1rem',
             right: '1rem',
-            background: 'var(--muted)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '2rem',
-            height: '2rem',
+            background: 'rgba(244,240,232,0.04)',
+            border: '1px solid rgba(201,146,42,0.20)',
+            borderRadius: '4px',
+            width: '1.875rem',
+            height: '1.875rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            color: 'var(--muted-foreground)',
+            color: 'rgba(244,240,232,0.45)',
           }}
         >
           <CloseIcon />
@@ -86,13 +87,12 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
         {/* Label */}
         <p style={{
           fontFamily: 'var(--font-inter)',
-          fontSize: '0.6875rem',
+          fontSize: '0.5625rem',
           fontWeight: 500,
-          letterSpacing: '0.1em',
+          letterSpacing: '0.20em',
           textTransform: 'uppercase',
-          color: 'var(--muted-foreground)',
+          color: 'rgba(201,146,42,0.55)',
           marginBottom: '1.25rem',
-          opacity: 0.7,
         }}>
           ¿A qué sucursal deseas escribir?
         </p>
@@ -112,8 +112,8 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
                 justifyContent: 'space-between',
                 gap: '1rem',
                 padding: '1rem 0',
-                borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-                borderBottom: '1px solid var(--border)',
+                borderTop: i === 0 ? '1px solid rgba(201,146,42,0.16)' : undefined,
+                borderBottom: '1px solid rgba(201,146,42,0.16)',
                 textDecoration: 'none',
               }}
             >
@@ -121,12 +121,12 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
                 fontFamily: 'var(--font-cormorant)',
                 fontSize: '1.25rem',
                 fontWeight: 400,
-                color: 'var(--foreground)',
+                color: '#f4f0e8',
                 letterSpacing: '-0.01em',
               }}>
                 {branch.name}
               </span>
-              <span style={{ color: 'var(--wood)', display: 'flex', alignItems: 'center' }}>
+              <span style={{ color: '#c9922a', display: 'flex', alignItems: 'center' }}>
                 <ChevronRight />
               </span>
             </a>
@@ -146,7 +146,7 @@ export default function WaBranchSheet({ open, onClose, branches, message }: Prop
             right: auto !important;
             bottom: auto !important;
             width: min(420px, 92vw) !important;
-            border-radius: 24px !important;
+            border-radius: 14px !important;
             transform: translate(-50%, -50%);
             animation: waModalIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both !important;
           }

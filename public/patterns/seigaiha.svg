@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="c">
+      <rect width="60" height="60"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#c)" fill="none" stroke="#c9922a" stroke-width="0.65">
+    <!-- Row A: lower center scale — center (30,60), arcs curve upward through (30,30) -->
+    <path d="M 0,60 A 30,30 0 0,0 60,60"/>
+    <path d="M 9,60 A 21,21 0 0,0 51,60"/>
+    <path d="M 18,60 A 12,12 0 0,0 42,60"/>
+    <!-- Row B: upper offset scales -->
+    <!-- Left edge scale — center (0,30), arcs curve upward through (0,0) -->
+    <path d="M -30,30 A 30,30 0 0,0 30,30"/>
+    <path d="M -21,30 A 21,21 0 0,0 21,30"/>
+    <path d="M -12,30 A 12,12 0 0,0 12,30"/>
+    <!-- Right edge scale — center (60,30), arcs curve upward through (60,0) -->
+    <path d="M 30,30 A 30,30 0 0,0 90,30"/>
+    <path d="M 39,30 A 21,21 0 0,0 81,30"/>
+    <path d="M 48,30 A 12,12 0 0,0 72,30"/>
+  </g>
+</svg>

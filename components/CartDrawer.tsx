@@ -29,14 +29,14 @@ type ResolvedLine = {
 // ── Icons ─────────────────────────────────────────────────────────────────────
 
 const CloseIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 )
 
 const TrashIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <polyline points="3 6 5 6 21 6" />
     <path d="M19 6l-1 14H6L5 6" />
     <path d="M10 11v6M14 11v6" />
@@ -45,7 +45,7 @@ const TrashIcon = () => (
 )
 
 const WhatsAppIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.552 4.114 1.522 5.844L.044 23.604a.5.5 0 0 0 .612.612l5.76-1.478A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 0 1-5.003-1.364l-.36-.214-3.72.954.97-3.64-.236-.376A9.818 9.818 0 1 1 12 21.818z" />
   </svg>
@@ -68,14 +68,13 @@ export default function CartDrawer({
   )
 
   // useState DEBE estar antes del early return para respetar Rules of Hooks.
-  // El estado persiste entre aperturas del drawer (UX deseado: se recuerda la elección).
   const [selectedBranchId, setSelectedBranchId] = useState<string | null>(
     validBranches[0]?.id ?? null,
   )
 
   if (!isOpen) return null
 
-  // ── Derivados (calculados solo cuando el drawer está visible) ─────────────
+  // ── Derivados ─────────────────────────────────────────────────────────────
 
   const productMap = new Map(products.map((p) => [p.id, p]))
 
@@ -136,9 +135,9 @@ export default function CartDrawer({
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'oklch(0.10 0.02 255 / 0.65)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
+          background: 'rgba(0,0,0,0.85)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           zIndex: 1001,
         }}
       />
@@ -155,8 +154,9 @@ export default function CartDrawer({
           left: 0,
           right: 0,
           maxHeight: '90dvh',
-          background: 'var(--background)',
-          borderRadius: '32px 32px 0 0',
+          background: '#0f0e0c',
+          borderRadius: '14px 14px 0 0',
+          borderTop: '1px solid rgba(201,146,42,0.28)',
           zIndex: 1002,
           display: 'flex',
           flexDirection: 'column',
@@ -169,17 +169,17 @@ export default function CartDrawer({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '1.5rem 1.75rem 1.125rem',
+          padding: '1.375rem 1.75rem 1rem',
           flexShrink: 0,
-          borderBottom: '1px solid var(--border)',
+          borderBottom: '1px solid rgba(201,146,42,0.16)',
         }}>
           <div>
             <h2 style={{
               fontFamily: 'var(--font-cormorant)',
-              fontSize: '1.75rem',
+              fontSize: '1.625rem',
               fontWeight: 400,
-              color: 'var(--foreground)',
-              letterSpacing: '-0.02em',
+              color: '#f4f0e8',
+              letterSpacing: '-0.015em',
               lineHeight: 1,
             }}>
               Tu pedido
@@ -187,11 +187,11 @@ export default function CartDrawer({
             {resolvedLines.length > 0 && (
               <p style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.75rem',
+                fontSize: '0.6875rem',
                 fontWeight: 300,
-                color: 'var(--muted-foreground)',
+                color: 'rgba(244,240,232,0.4)',
                 marginTop: '0.25rem',
-                letterSpacing: '0.01em',
+                letterSpacing: '0.04em',
               }}>
                 {resolvedLines.reduce((acc, l) => acc + l.quantity, 0)} productos
               </p>
@@ -204,15 +204,15 @@ export default function CartDrawer({
             className="cart-close-btn"
             style={{
               background: 'transparent',
-              border: '1px solid var(--border)',
-              borderRadius: '50%',
-              width: '2.25rem',
-              height: '2.25rem',
+              border: '1px solid rgba(201,146,42,0.22)',
+              borderRadius: '4px',
+              width: '2rem',
+              height: '2rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              color: 'var(--muted-foreground)',
+              color: 'rgba(244,240,232,0.5)',
               transition: 'background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease',
               flexShrink: 0,
             }}
@@ -230,7 +230,7 @@ export default function CartDrawer({
                 fontSize: '1.375rem',
                 fontWeight: 300,
                 fontStyle: 'italic',
-                color: 'var(--muted-foreground)',
+                color: 'rgba(244,240,232,0.30)',
                 letterSpacing: '-0.01em',
               }}>
                 Tu carrito está vacío
@@ -245,18 +245,18 @@ export default function CartDrawer({
                   alignItems: 'flex-start',
                   gap: '0.875rem',
                   padding: '1.125rem 0',
-                  borderBottom: '1px solid var(--border)',
+                  borderBottom: '1px solid rgba(201,146,42,0.12)',
                 }}
               >
                 {/* Miniatura */}
                 {line.product.image_url && (
                   <div style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '10px',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '6px',
                     overflow: 'hidden',
                     flexShrink: 0,
-                    boxShadow: 'inset 0 0 0 1px var(--border)',
+                    boxShadow: 'inset 0 0 0 1px rgba(201,146,42,0.18)',
                   }}>
                     <img
                       src={line.product.image_url}
@@ -270,9 +270,9 @@ export default function CartDrawer({
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{
                     fontFamily: 'var(--font-cormorant)',
-                    fontSize: '1.125rem',
+                    fontSize: '1.0625rem',
                     fontWeight: 500,
-                    color: 'var(--foreground)',
+                    color: '#f4f0e8',
                     lineHeight: 1.2,
                     letterSpacing: '-0.01em',
                     marginBottom: '0.2rem',
@@ -285,9 +285,9 @@ export default function CartDrawer({
                   {line.optionName && (
                     <p style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: '0.78rem',
+                      fontSize: '0.75rem',
                       fontWeight: 300,
-                      color: 'var(--muted-foreground)',
+                      color: 'rgba(244,240,232,0.40)',
                       lineHeight: 1.4,
                     }}>
                       {line.optionName}
@@ -297,9 +297,9 @@ export default function CartDrawer({
                   {line.extrasNames.map((name) => (
                     <p key={name} style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: '0.75rem',
+                      fontSize: '0.72rem',
                       fontWeight: 300,
-                      color: 'var(--muted-foreground)',
+                      color: 'rgba(244,240,232,0.35)',
                       lineHeight: 1.4,
                     }}>
                       + {name}
@@ -311,42 +311,45 @@ export default function CartDrawer({
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.625rem',
-                    marginTop: '0.75rem',
+                    marginTop: '0.625rem',
                   }}>
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
-                      border: '1px solid var(--border)',
-                      borderRadius: '9999px',
+                      border: '1px solid rgba(201,146,42,0.22)',
+                      borderRadius: '3px',
                     }}>
                       <button
                         type="button"
                         onClick={() => updateQuantity(line.cartIndex, line.quantity - 1)}
                         aria-label="Reducir cantidad"
                         style={{
-                          width: '1.875rem',
-                          height: '1.875rem',
+                          width: '1.75rem',
+                          height: '1.75rem',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           background: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
-                          color: 'var(--foreground)',
-                          fontSize: '1rem',
+                          color: 'rgba(244,240,232,0.6)',
+                          fontSize: '0.9375rem',
                           lineHeight: 1,
                         }}
                       >
                         −
                       </button>
                       <span style={{
-                        minWidth: '1.375rem',
+                        minWidth: '1.25rem',
                         textAlign: 'center',
                         fontFamily: 'var(--font-inter)',
                         fontSize: '0.8125rem',
                         fontWeight: 500,
-                        color: 'var(--foreground)',
+                        color: '#f4f0e8',
                         userSelect: 'none',
+                        borderLeft: '1px solid rgba(201,146,42,0.16)',
+                        borderRight: '1px solid rgba(201,146,42,0.16)',
+                        lineHeight: '1.75rem',
                       }}>
                         {line.quantity}
                       </span>
@@ -355,16 +358,16 @@ export default function CartDrawer({
                         onClick={() => updateQuantity(line.cartIndex, line.quantity + 1)}
                         aria-label="Aumentar cantidad"
                         style={{
-                          width: '1.875rem',
-                          height: '1.875rem',
+                          width: '1.75rem',
+                          height: '1.75rem',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           background: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
-                          color: 'var(--foreground)',
-                          fontSize: '1rem',
+                          color: 'rgba(244,240,232,0.6)',
+                          fontSize: '0.9375rem',
                           lineHeight: 1,
                         }}
                       >
@@ -374,9 +377,9 @@ export default function CartDrawer({
 
                     <span style={{
                       fontFamily: 'var(--font-cormorant)',
-                      fontSize: '1.0625rem',
+                      fontSize: '1rem',
                       fontWeight: 500,
-                      color: 'var(--wood)',
+                      color: '#c9922a',
                       letterSpacing: '-0.01em',
                       lineHeight: 1,
                     }}>
@@ -393,13 +396,13 @@ export default function CartDrawer({
                         background: 'transparent',
                         border: 'none',
                         cursor: 'pointer',
-                        color: 'var(--muted-foreground)',
+                        color: 'rgba(244,240,232,0.25)',
                         padding: '0.3rem',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: '4px',
-                        transition: 'color 0.2s ease, background-color 0.2s ease',
+                        borderRadius: '3px',
+                        transition: 'color 0.2s ease',
                       }}
                     >
                       <TrashIcon />
@@ -414,9 +417,9 @@ export default function CartDrawer({
         {/* ── Footer: total + selector de sucursal + CTA ── */}
         <div style={{
           flexShrink: 0,
-          padding: '1.125rem 1.75rem 1.5rem',
-          borderTop: '1px solid var(--border)',
-          background: 'var(--background)',
+          padding: '1rem 1.75rem 1.375rem',
+          borderTop: '1px solid rgba(201,146,42,0.18)',
+          background: '#0f0e0c',
         }}>
           {/* Fila total */}
           <div style={{
@@ -427,21 +430,20 @@ export default function CartDrawer({
           }}>
             <span style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.6875rem',
+              fontSize: '0.5625rem',
               fontWeight: 500,
-              letterSpacing: '0.1em',
+              letterSpacing: '0.20em',
               textTransform: 'uppercase',
-              color: 'var(--muted-foreground)',
-              opacity: 0.7,
+              color: 'rgba(201,146,42,0.55)',
             }}>
               Total
             </span>
             <span style={{
               fontFamily: 'var(--font-cormorant)',
-              fontSize: '2.125rem',
+              fontSize: '2rem',
               fontWeight: 500,
-              color: 'var(--foreground)',
-              letterSpacing: '-0.03em',
+              color: '#c9922a',
+              letterSpacing: '-0.025em',
               lineHeight: 1,
             }}>
               {formatMXN(grandTotal)}
@@ -454,7 +456,7 @@ export default function CartDrawer({
               fontFamily: 'var(--font-inter)',
               fontSize: '0.78rem',
               fontWeight: 300,
-              color: 'var(--muted-foreground)',
+              color: 'rgba(244,240,232,0.35)',
               textAlign: 'center',
               marginBottom: '0.875rem',
               lineHeight: 1.5,
@@ -468,13 +470,12 @@ export default function CartDrawer({
             <div style={{ marginBottom: '1rem' }}>
               <p style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.6875rem',
+                fontSize: '0.5625rem',
                 fontWeight: 500,
-                letterSpacing: '0.1em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--muted-foreground)',
+                color: 'rgba(201,146,42,0.55)',
                 marginBottom: '0.625rem',
-                opacity: 0.7,
               }}>
                 Elige una sucursal
               </p>
@@ -489,8 +490,8 @@ export default function CartDrawer({
                         alignItems: 'center',
                         gap: '0.75rem',
                         padding: '0.5rem 0',
-                        borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-                        borderBottom: '1px solid var(--border)',
+                        borderTop: i === 0 ? '1px solid rgba(201,146,42,0.14)' : undefined,
+                        borderBottom: '1px solid rgba(201,146,42,0.14)',
                         cursor: 'pointer',
                       }}
                     >
@@ -506,11 +507,11 @@ export default function CartDrawer({
                       <div
                         aria-hidden="true"
                         style={{
-                          width: '1rem',
-                          height: '1rem',
+                          width: '0.9375rem',
+                          height: '0.9375rem',
                           borderRadius: '50%',
-                          border: `2px solid ${isSelected ? 'var(--foreground)' : 'var(--border)'}`,
-                          background: isSelected ? 'var(--foreground)' : 'transparent',
+                          border: `2px solid ${isSelected ? '#c9922a' : 'rgba(201,146,42,0.28)'}`,
+                          background: isSelected ? '#c9922a' : 'transparent',
                           flexShrink: 0,
                           transition: 'border-color 0.15s ease, background 0.15s ease',
                           display: 'flex',
@@ -520,10 +521,10 @@ export default function CartDrawer({
                       >
                         {isSelected && (
                           <div style={{
-                            width: '0.3125rem',
-                            height: '0.3125rem',
+                            width: '0.3rem',
+                            height: '0.3rem',
                             borderRadius: '50%',
-                            background: 'var(--background)',
+                            background: '#0b0a08',
                           }} />
                         )}
                       </div>
@@ -531,7 +532,7 @@ export default function CartDrawer({
                         fontFamily: 'var(--font-inter)',
                         fontSize: '0.875rem',
                         fontWeight: isSelected ? 400 : 300,
-                        color: isSelected ? 'var(--foreground)' : 'var(--muted-foreground)',
+                        color: isSelected ? '#f4f0e8' : 'rgba(244,240,232,0.45)',
                         lineHeight: 1.4,
                         transition: 'color 0.15s ease',
                       }}>
@@ -544,7 +545,7 @@ export default function CartDrawer({
             </div>
           )}
 
-          {/* ── Botón WhatsApp ── */}
+          {/* ── Botón checkout ── */}
           <button
             type="button"
             onClick={handleSendOrder}
@@ -552,22 +553,22 @@ export default function CartDrawer({
             className="cart-send-btn"
             style={{
               width: '100%',
-              padding: '1rem 1.5rem',
-              background: canSend ? '#25D366' : 'var(--border)',
-              color: canSend ? '#fff' : 'var(--muted-foreground)',
-              border: 'none',
-              borderRadius: '9999px',
+              padding: '0.9375rem 1.5rem',
+              background: canSend ? '#c9922a' : 'rgba(201,146,42,0.08)',
+              color: canSend ? '#0b0a08' : 'rgba(244,240,232,0.22)',
+              border: `1px solid ${canSend ? '#c9922a' : 'rgba(201,146,42,0.14)'}`,
+              borderRadius: '4px',
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.9375rem',
+              fontSize: '0.8125rem',
               fontWeight: 500,
-              letterSpacing: '0.01em',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
               cursor: canSend ? 'pointer' : 'not-allowed',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.625rem',
               transition: 'opacity 0.2s ease',
-              marginTop: validBranches.length > 1 ? 0 : undefined,
             }}
           >
             <WhatsAppIcon />
@@ -586,13 +587,12 @@ export default function CartDrawer({
           to   { transform: translateX(0); }
         }
         .cart-close-btn:hover {
-          background-color: var(--muted) !important;
-          border-color: var(--foreground) !important;
-          color: var(--foreground) !important;
+          background-color: rgba(201,146,42,0.08) !important;
+          border-color: rgba(201,146,42,0.40) !important;
+          color: #c9922a !important;
         }
         .cart-remove-btn:hover {
-          color: var(--foreground) !important;
-          background-color: var(--muted) !important;
+          color: rgba(244,240,232,0.65) !important;
         }
         .cart-send-btn:hover:not(:disabled) { opacity: 0.88; }
         @media (min-width: 768px) {
@@ -604,7 +604,9 @@ export default function CartDrawer({
             width: min(420px, 92vw) !important;
             max-height: none !important;
             border-radius: 0 !important;
-            box-shadow: -8px 0 40px rgba(10, 10, 40, 0.12) !important;
+            border-top: none !important;
+            border-left: 1px solid rgba(201,146,42,0.22) !important;
+            box-shadow: -12px 0 48px rgba(0,0,0,0.5) !important;
             animation: cartSlideRight 0.36s cubic-bezier(0.22, 1, 0.36, 1) both !important;
           }
         }

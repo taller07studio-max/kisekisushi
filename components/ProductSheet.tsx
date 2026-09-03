@@ -15,8 +15,8 @@ interface ProductSheetProps {
 
 const CloseIcon = () => (
   <svg
-    width="16"
-    height="16"
+    width="14"
+    height="14"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -34,39 +34,38 @@ const closeButtonStyle: React.CSSProperties = {
   position: 'absolute',
   top: '1rem',
   right: '1rem',
-  background: 'var(--background)',
-  border: 'none',
-  borderRadius: '50%',
-  width: '2.5rem',
-  height: '2.5rem',
+  background: 'rgba(244,240,232,0.06)',
+  border: '1px solid rgba(201,146,42,0.20)',
+  borderRadius: '4px',
+  width: '2.25rem',
+  height: '2.25rem',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
   zIndex: 1003,
-  color: 'var(--foreground)',
-  boxShadow: '0 2px 12px rgba(10,10,40,0.12)',
-  transition: 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease',
+  color: 'rgba(244,240,232,0.65)',
+  transition: 'background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease',
 }
 
 const backdropStyle: React.CSSProperties = {
   position: 'fixed',
   inset: 0,
-  background: 'oklch(0.10 0.02 255 / 0.65)',
-  backdropFilter: 'blur(6px)',
-  WebkitBackdropFilter: 'blur(6px)',
+  background: 'rgba(0,0,0,0.85)',
+  backdropFilter: 'blur(4px)',
+  WebkitBackdropFilter: 'blur(4px)',
   zIndex: 1001,
 }
 
 const sectionLabelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-inter)',
-  fontSize: '0.6875rem',
+  fontSize: '0.625rem',
   fontWeight: 500,
-  letterSpacing: '0.1em',
+  letterSpacing: '0.18em',
   textTransform: 'uppercase',
-  color: 'var(--muted-foreground)',
+  color: '#c9922a',
   marginBottom: '0.75rem',
-  opacity: 0.7,
+  opacity: 0.8,
 }
 
 // ── Read-only sub-components (unchanged when hasCart is false) ─────────────────
@@ -85,14 +84,14 @@ function OptionsList({ items, label }: { items: ProductItem[]; label: string }) 
               justifyContent: 'space-between',
               gap: '1rem',
               padding: '0.625rem 0',
-              borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-              borderBottom: '1px solid var(--border)',
+              borderTop: i === 0 ? '1px solid rgba(201,146,42,0.16)' : undefined,
+              borderBottom: '1px solid rgba(201,146,42,0.16)',
             }}
           >
-            <span style={{ fontFamily: 'var(--font-inter)', fontSize: '0.9rem', fontWeight: 300, color: 'var(--foreground)', lineHeight: 1.4 }}>
+            <span style={{ fontFamily: 'var(--font-inter)', fontSize: '0.9rem', fontWeight: 300, color: 'rgba(244,240,232,0.72)', lineHeight: 1.4 }}>
               {item.name}
             </span>
-            <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', fontWeight: 500, color: 'var(--wood)', letterSpacing: '-0.01em', flexShrink: 0 }}>
+            <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', fontWeight: 500, color: '#c9922a', letterSpacing: '-0.01em', flexShrink: 0 }}>
               {formatMXN(item.price)}
             </span>
           </div>
@@ -116,14 +115,14 @@ function ExtrasList({ items }: { items: ProductItem[] }) {
               justifyContent: 'space-between',
               gap: '1rem',
               padding: '0.625rem 0',
-              borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-              borderBottom: '1px solid var(--border)',
+              borderTop: i === 0 ? '1px solid rgba(201,146,42,0.16)' : undefined,
+              borderBottom: '1px solid rgba(201,146,42,0.16)',
             }}
           >
-            <span style={{ fontFamily: 'var(--font-inter)', fontSize: '0.9rem', fontWeight: 300, color: 'var(--foreground)', lineHeight: 1.4 }}>
+            <span style={{ fontFamily: 'var(--font-inter)', fontSize: '0.9rem', fontWeight: 300, color: 'rgba(244,240,232,0.72)', lineHeight: 1.4 }}>
               {item.name}
             </span>
-            <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', fontWeight: 500, color: 'var(--wood)', letterSpacing: '-0.01em', flexShrink: 0 }}>
+            <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', fontWeight: 500, color: '#c9922a', letterSpacing: '-0.01em', flexShrink: 0 }}>
               + {formatMXN(item.price)}
             </span>
           </div>
@@ -159,8 +158,8 @@ function InteractiveOptionsList({
                 justifyContent: 'space-between',
                 gap: '1rem',
                 padding: '0.625rem 0',
-                borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-                borderBottom: '1px solid var(--border)',
+                borderTop: i === 0 ? '1px solid rgba(201,146,42,0.16)' : undefined,
+                borderBottom: '1px solid rgba(201,146,42,0.16)',
                 cursor: 'pointer',
               }}
             >
@@ -178,11 +177,11 @@ function InteractiveOptionsList({
                 <div
                   aria-hidden="true"
                   style={{
-                    width: '1.125rem',
-                    height: '1.125rem',
+                    width: '1rem',
+                    height: '1rem',
                     borderRadius: '50%',
-                    border: `2px solid ${isSelected ? 'var(--foreground)' : 'var(--border)'}`,
-                    background: isSelected ? 'var(--foreground)' : 'transparent',
+                    border: `2px solid ${isSelected ? '#c9922a' : 'rgba(201,146,42,0.30)'}`,
+                    background: isSelected ? '#c9922a' : 'transparent',
                     flexShrink: 0,
                     transition: 'border-color 0.15s ease, background 0.15s ease',
                     display: 'flex',
@@ -191,14 +190,14 @@ function InteractiveOptionsList({
                   }}
                 >
                   {isSelected && (
-                    <div style={{ width: '0.375rem', height: '0.375rem', borderRadius: '50%', background: 'var(--background)' }} />
+                    <div style={{ width: '0.3125rem', height: '0.3125rem', borderRadius: '50%', background: '#0b0a08' }} />
                   )}
                 </div>
                 <span style={{
                   fontFamily: 'var(--font-inter)',
                   fontSize: '0.9rem',
                   fontWeight: isSelected ? 400 : 300,
-                  color: isSelected ? 'var(--foreground)' : 'var(--muted-foreground)',
+                  color: isSelected ? '#f4f0e8' : 'rgba(244,240,232,0.55)',
                   lineHeight: 1.4,
                   transition: 'color 0.15s ease',
                 }}>
@@ -209,7 +208,7 @@ function InteractiveOptionsList({
                 fontFamily: 'var(--font-cormorant)',
                 fontSize: '1.1rem',
                 fontWeight: 500,
-                color: isSelected ? 'var(--wood)' : 'var(--muted-foreground)',
+                color: isSelected ? '#c9922a' : 'rgba(244,240,232,0.40)',
                 letterSpacing: '-0.01em',
                 flexShrink: 0,
                 transition: 'color 0.15s ease',
@@ -256,8 +255,8 @@ function InteractiveExtrasList({
                 justifyContent: 'space-between',
                 gap: '1rem',
                 padding: '0.625rem 0',
-                borderTop: i === 0 ? '1px solid var(--border)' : undefined,
-                borderBottom: '1px solid var(--border)',
+                borderTop: i === 0 ? '1px solid rgba(201,146,42,0.16)' : undefined,
+                borderBottom: '1px solid rgba(201,146,42,0.16)',
                 cursor: 'pointer',
               }}
             >
@@ -272,11 +271,11 @@ function InteractiveExtrasList({
                 <div
                   aria-hidden="true"
                   style={{
-                    width: '1.125rem',
-                    height: '1.125rem',
-                    borderRadius: '4px',
-                    border: `2px solid ${isChecked ? 'var(--foreground)' : 'var(--border)'}`,
-                    background: isChecked ? 'var(--foreground)' : 'transparent',
+                    width: '1rem',
+                    height: '1rem',
+                    borderRadius: '3px',
+                    border: `2px solid ${isChecked ? '#c9922a' : 'rgba(201,146,42,0.30)'}`,
+                    background: isChecked ? '#c9922a' : 'transparent',
                     flexShrink: 0,
                     transition: 'border-color 0.15s ease, background 0.15s ease',
                     display: 'flex',
@@ -285,8 +284,8 @@ function InteractiveExtrasList({
                   }}
                 >
                   {isChecked && (
-                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true">
-                      <path d="M1 4L3.5 6.5L9 1" stroke="var(--background)" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg width="9" height="7" viewBox="0 0 10 8" fill="none" aria-hidden="true">
+                      <path d="M1 4L3.5 6.5L9 1" stroke="#0b0a08" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
                 </div>
@@ -294,7 +293,7 @@ function InteractiveExtrasList({
                   fontFamily: 'var(--font-inter)',
                   fontSize: '0.9rem',
                   fontWeight: isChecked ? 400 : 300,
-                  color: isChecked ? 'var(--foreground)' : 'var(--muted-foreground)',
+                  color: isChecked ? '#f4f0e8' : 'rgba(244,240,232,0.55)',
                   lineHeight: 1.4,
                   transition: 'color 0.15s ease',
                 }}>
@@ -305,7 +304,7 @@ function InteractiveExtrasList({
                 fontFamily: 'var(--font-cormorant)',
                 fontSize: '1.1rem',
                 fontWeight: 500,
-                color: isChecked ? 'var(--wood)' : 'var(--muted-foreground)',
+                color: isChecked ? '#c9922a' : 'rgba(244,240,232,0.40)',
                 letterSpacing: '-0.01em',
                 flexShrink: 0,
                 transition: 'color 0.15s ease',
@@ -327,8 +326,8 @@ function QuantityStepper({ quantity, onChange }: { quantity: number; onChange: (
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        border: '1px solid var(--border)',
-        borderRadius: '9999px',
+        border: '1px solid rgba(201,146,42,0.28)',
+        borderRadius: '4px',
         overflow: 'hidden',
       }}>
         <button
@@ -344,8 +343,8 @@ function QuantityStepper({ quantity, onChange }: { quantity: number; onChange: (
             background: 'transparent',
             border: 'none',
             cursor: quantity <= 1 ? 'not-allowed' : 'pointer',
-            color: quantity <= 1 ? 'var(--border)' : 'var(--foreground)',
-            fontSize: '1.25rem',
+            color: quantity <= 1 ? 'rgba(244,240,232,0.18)' : 'rgba(244,240,232,0.7)',
+            fontSize: '1.125rem',
             fontWeight: 300,
             lineHeight: 1,
             transition: 'color 0.15s ease',
@@ -357,10 +356,14 @@ function QuantityStepper({ quantity, onChange }: { quantity: number; onChange: (
           minWidth: '2rem',
           textAlign: 'center',
           fontFamily: 'var(--font-inter)',
-          fontSize: '0.9rem',
+          fontSize: '0.875rem',
           fontWeight: 500,
-          color: 'var(--foreground)',
+          color: '#f4f0e8',
           userSelect: 'none',
+          borderLeft: '1px solid rgba(201,146,42,0.16)',
+          borderRight: '1px solid rgba(201,146,42,0.16)',
+          padding: '0 0.25rem',
+          lineHeight: '2.25rem',
         }}>
           {quantity}
         </span>
@@ -377,8 +380,8 @@ function QuantityStepper({ quantity, onChange }: { quantity: number; onChange: (
             background: 'transparent',
             border: 'none',
             cursor: quantity >= 20 ? 'not-allowed' : 'pointer',
-            color: quantity >= 20 ? 'var(--border)' : 'var(--foreground)',
-            fontSize: '1.25rem',
+            color: quantity >= 20 ? 'rgba(244,240,232,0.18)' : 'rgba(244,240,232,0.7)',
+            fontSize: '1.125rem',
             fontWeight: 300,
             lineHeight: 1,
             transition: 'color 0.15s ease',
@@ -434,8 +437,6 @@ function ProductSheetInner({
       quantity,
     })
     onClose()
-    // Reset para la próxima apertura (key={product.id} reiniciará el estado si
-    // cambia el producto, pero reseteamos explícitamente si se cierra sin cambio de producto)
     setSelectedOptionId(activeOptions[0]?.id ?? null)
     setSelectedExtraIds([])
     setQuantity(1)
@@ -450,9 +451,9 @@ function ProductSheetInner({
           fontFamily: 'var(--font-cormorant)',
           fontSize: 'clamp(2rem, 5vw, 2.75rem)',
           fontWeight: 500,
-          color: 'var(--foreground)',
+          color: '#f4f0e8',
           lineHeight: 1.05,
-          letterSpacing: '-0.025em',
+          letterSpacing: '-0.02em',
           marginBottom: '0.625rem',
         }}>
           {product.name}
@@ -464,7 +465,7 @@ function ProductSheetInner({
             fontFamily: 'var(--font-cormorant)',
             fontSize: '1.5rem',
             fontWeight: 500,
-            color: 'var(--wood)',
+            color: '#c9922a',
             marginBottom: '1.25rem',
             letterSpacing: '-0.01em',
           }}>
@@ -478,7 +479,7 @@ function ProductSheetInner({
             fontSize: '0.9375rem',
             fontWeight: 300,
             lineHeight: 1.75,
-            color: 'var(--muted-foreground)',
+            color: 'rgba(244,240,232,0.55)',
           }}>
             {product.description}
           </p>
@@ -506,7 +507,7 @@ function ProductSheetInner({
           <div style={{
             position: 'sticky',
             bottom: 0,
-            background: 'var(--background)',
+            background: '#0f0e0c',
             paddingTop: '1rem',
             paddingBottom: '0.25rem',
             marginTop: '1.5rem',
@@ -518,14 +519,15 @@ function ProductSheetInner({
               style={{
                 width: '100%',
                 padding: '0.9375rem 1.5rem',
-                background: 'var(--foreground)',
-                color: 'var(--background)',
+                background: '#c9922a',
+                color: '#0b0a08',
                 border: 'none',
-                borderRadius: '9999px',
+                borderRadius: '4px',
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.9375rem',
+                fontSize: '0.875rem',
                 fontWeight: 500,
-                letterSpacing: '0.01em',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -535,7 +537,7 @@ function ProductSheetInner({
               }}
             >
               <span>Agregar {quantity} al carrito</span>
-              <span style={{ opacity: 0.4 }}>•</span>
+              <span style={{ opacity: 0.5 }}>·</span>
               <span style={{
                 fontFamily: 'var(--font-cormorant)',
                 fontSize: '1.125rem',
@@ -571,8 +573,9 @@ function ProductSheetInner({
             left: 0,
             right: 0,
             height: '92dvh',
-            background: 'var(--background)',
-            borderRadius: '32px 32px 0 0',
+            background: '#0f0e0c',
+            borderRadius: '14px 14px 0 0',
+            borderTop: '1px solid rgba(201,146,42,0.28)',
             overflow: 'hidden',
             zIndex: 1002,
             animation: 'sheetSlideUp 0.36s cubic-bezier(0.22, 1, 0.36, 1) both',
@@ -584,7 +587,7 @@ function ProductSheetInner({
             <CloseIcon />
           </button>
 
-          {/* Área scrollable — flex: 1 en mobile; grid en desktop (via CSS) */}
+          {/* Área scrollable */}
           <div className="sheet-inner" style={{ overflowY: 'auto', flex: 1, minHeight: 0 }}>
             {/* Imagen */}
             <div
@@ -601,12 +604,12 @@ function ProductSheetInner({
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, var(--background) 0%, transparent 40%)',
+                  background: 'linear-gradient(to top, #0f0e0c 0%, transparent 45%)',
                 }}
               />
             </div>
 
-            {/* Contenido — botón sticky vive aquí */}
+            {/* Contenido */}
             {renderContent({ padding: '0.75rem 1.75rem 1rem' })}
           </div>
         </div>
@@ -621,8 +624,9 @@ function ProductSheetInner({
             to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
           }
           .sheet-close-btn:hover {
-            transform: rotate(90deg);
-            background-color: var(--muted) !important;
+            background-color: rgba(201,146,42,0.10) !important;
+            border-color: rgba(201,146,42,0.40) !important;
+            color: #c9922a !important;
           }
           .add-to-cart-btn:hover { opacity: 0.85 !important; }
           @media (min-width: 768px) {
@@ -634,7 +638,7 @@ function ProductSheetInner({
               height: auto !important;
               max-height: 88vh !important;
               width: min(880px, 92vw) !important;
-              border-radius: 32px !important;
+              border-radius: 14px !important;
               transform: translate(-50%, -50%);
               animation: sheetFadeIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both !important;
             }
@@ -681,8 +685,9 @@ function ProductSheetInner({
           bottom: 0,
           left: 0,
           right: 0,
-          background: 'var(--background)',
-          borderRadius: '32px 32px 0 0',
+          background: '#0f0e0c',
+          borderRadius: '14px 14px 0 0',
+          borderTop: '1px solid rgba(201,146,42,0.28)',
           overflow: 'hidden',
           zIndex: 1002,
           animation: 'sheetSlideUpText 0.36s cubic-bezier(0.22, 1, 0.36, 1) both',
@@ -697,14 +702,15 @@ function ProductSheetInner({
 
         {/* Área scrollable */}
         <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, padding: '3.25rem 1.75rem 1.5rem' }}>
-          {/* Accent bar */}
+          {/* Línea decorativa dorada */}
           <div
             aria-hidden="true"
             style={{
               width: '2rem',
-              height: '2px',
-              backgroundColor: 'var(--wood)',
+              height: '1px',
+              backgroundColor: '#c9922a',
               marginBottom: '1.75rem',
+              opacity: 0.6,
             }}
           />
 
@@ -713,9 +719,9 @@ function ProductSheetInner({
             fontSize: 'clamp(2.25rem, 7vw, 3.25rem)',
             fontWeight: 300,
             fontStyle: 'italic',
-            color: 'var(--foreground)',
+            color: '#f4f0e8',
             lineHeight: 1.0,
-            letterSpacing: '-0.03em',
+            letterSpacing: '-0.025em',
             marginBottom: '1.25rem',
           }}>
             {product.name}
@@ -726,7 +732,7 @@ function ProductSheetInner({
               fontFamily: 'var(--font-cormorant)',
               fontSize: '1.75rem',
               fontWeight: 500,
-              color: 'var(--wood)',
+              color: '#c9922a',
               letterSpacing: '-0.01em',
               marginBottom: product.description ? '1.75rem' : 0,
             }}>
@@ -736,13 +742,13 @@ function ProductSheetInner({
 
           {product.description && (
             <>
-              <div aria-hidden="true" style={{ height: '1px', backgroundColor: 'var(--border)', marginBottom: '1.5rem' }} />
+              <div aria-hidden="true" style={{ height: '1px', backgroundColor: 'rgba(201,146,42,0.16)', marginBottom: '1.5rem' }} />
               <p style={{
                 fontFamily: 'var(--font-inter)',
                 fontSize: '0.9375rem',
                 fontWeight: 300,
                 lineHeight: 1.8,
-                color: 'var(--muted-foreground)',
+                color: 'rgba(244,240,232,0.55)',
               }}>
                 {product.description}
               </p>
@@ -763,7 +769,6 @@ function ProductSheetInner({
 
           {hasCart && <QuantityStepper quantity={quantity} onChange={setQuantity} />}
 
-          {/* Padding inferior cuando no hay botón de carrito */}
           {!hasCart && <div style={{ height: '1.5rem' }} />}
         </div>
 
@@ -771,8 +776,8 @@ function ProductSheetInner({
         {hasCart && (
           <div style={{
             padding: '0.875rem 1.75rem 1.25rem',
-            borderTop: '1px solid var(--border)',
-            background: 'var(--background)',
+            borderTop: '1px solid rgba(201,146,42,0.16)',
+            background: '#0f0e0c',
             flexShrink: 0,
           }}>
             <button
@@ -782,14 +787,15 @@ function ProductSheetInner({
               style={{
                 width: '100%',
                 padding: '0.9375rem 1.5rem',
-                background: 'var(--foreground)',
-                color: 'var(--background)',
+                background: '#c9922a',
+                color: '#0b0a08',
                 border: 'none',
-                borderRadius: '9999px',
+                borderRadius: '4px',
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.9375rem',
+                fontSize: '0.875rem',
                 fontWeight: 500,
-                letterSpacing: '0.01em',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -799,7 +805,7 @@ function ProductSheetInner({
               }}
             >
               <span>Agregar {quantity} al carrito</span>
-              <span style={{ opacity: 0.4 }}>•</span>
+              <span style={{ opacity: 0.4 }}>·</span>
               <span style={{
                 fontFamily: 'var(--font-cormorant)',
                 fontSize: '1.125rem',
@@ -823,8 +829,9 @@ function ProductSheetInner({
           to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
         .sheet-close-btn:hover {
-          transform: rotate(90deg);
-          background-color: var(--muted) !important;
+          background-color: rgba(201,146,42,0.10) !important;
+          border-color: rgba(201,146,42,0.40) !important;
+          color: #c9922a !important;
         }
         .add-to-cart-btn:hover { opacity: 0.85 !important; }
         @media (min-width: 768px) {
@@ -836,7 +843,7 @@ function ProductSheetInner({
             bottom: auto !important;
             max-height: 85vh !important;
             width: min(520px, 92vw) !important;
-            border-radius: 32px !important;
+            border-radius: 14px !important;
             transform: translate(-50%, -50%);
             animation: sheetFadeInText 0.32s cubic-bezier(0.22, 1, 0.36, 1) both !important;
           }

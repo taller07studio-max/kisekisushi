@@ -98,56 +98,57 @@ export default function CatalogClient({
   const pillBase: React.CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
-    padding: '0.45rem 1.1rem',
-    borderRadius: '9999px',
-    border: '1px solid var(--border)',
+    padding: '0.4375rem 1rem',
+    borderRadius: '3px',
+    border: '1px solid rgba(201,146,42,0.20)',
     background: 'transparent',
     fontFamily: 'var(--font-inter)',
-    fontSize: '0.75rem',
+    fontSize: '0.6875rem',
     fontWeight: 400,
-    letterSpacing: '0.05em',
-    color: 'var(--muted-foreground)',
+    letterSpacing: '0.10em',
+    textTransform: 'uppercase',
+    color: 'rgba(244,240,232,0.5)',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    transition: 'all 0.18s ease',
     whiteSpace: 'nowrap',
   }
 
   const pillActiveAll: React.CSSProperties = {
     ...pillBase,
-    background: 'var(--foreground)',
-    border: '1px solid var(--foreground)',
-    color: 'var(--background)',
+    background: '#c9922a',
+    border: '1px solid #c9922a',
+    color: '#0b0a08',
   }
 
   const pillActiveCat: React.CSSProperties = {
     ...pillBase,
-    background: 'var(--foreground)',
-    border: '1px solid var(--foreground)',
-    color: 'var(--background)',
+    background: '#c9922a',
+    border: '1px solid #c9922a',
+    color: '#0b0a08',
   }
 
   const tabBase: React.CSSProperties = {
-    padding: '0.3rem 0.9rem',
-    borderRadius: '9999px',
+    padding: '0.3125rem 0.875rem',
+    borderRadius: '3px',
     border: 'none',
     background: 'transparent',
     fontFamily: 'var(--font-inter)',
-    fontSize: '0.72rem',
+    fontSize: '0.6875rem',
     fontWeight: 400,
-    letterSpacing: '0.04em',
-    color: 'var(--muted-foreground)',
+    letterSpacing: '0.06em',
+    color: 'rgba(244,240,232,0.4)',
     cursor: 'pointer',
     transition: 'all 0.18s ease',
   }
 
   const tabActive: React.CSSProperties = {
     ...tabBase,
-    background: 'oklch(0.53 0.19 30 / 0.10)',
-    color: 'var(--wood)',
+    background: 'rgba(201,146,42,0.08)',
+    color: '#c9922a',
     fontWeight: 500,
   }
 
-  const cardRadius = 'calc(var(--radius) * 1.4)'
+  const cardRadius = '6px'
 
   return (
     <>
@@ -213,8 +214,9 @@ export default function CatalogClient({
             style={{
               fontFamily: 'var(--font-cormorant)',
               fontSize: '1.75rem',
-              color: 'var(--muted-foreground)',
+              color: 'rgba(244,240,232,0.35)',
               fontWeight: 300,
+              fontStyle: 'italic',
               letterSpacing: '-0.01em',
             }}
           >
@@ -224,7 +226,6 @@ export default function CatalogClient({
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(3rem, 6vw, 4.5rem)' }}>
           {categories.map((cat) => {
-            // Productos de esta categoría dentro del conjunto ya filtrado por URL
             const catProducts = filteredProducts.filter((p) =>
               p.categoryAssignments.some((a) => a.categoryId === cat.id)
             )
@@ -240,9 +241,9 @@ export default function CatalogClient({
                       fontFamily: 'var(--font-cormorant)',
                       fontSize: 'clamp(1.75rem, 3vw, 2.375rem)',
                       fontWeight: 400,
-                      color: 'var(--foreground)',
+                      color: '#f4f0e8',
                       lineHeight: 1.1,
-                      letterSpacing: '-0.02em',
+                      letterSpacing: '-0.01em',
                       marginBottom: '0.75rem',
                     }}
                   >
@@ -250,7 +251,7 @@ export default function CatalogClient({
                   </h2>
                   <div
                     aria-hidden="true"
-                    style={{ height: '1px', backgroundColor: 'var(--border)' }}
+                    style={{ height: '1px', backgroundColor: 'rgba(201,146,42,0.22)' }}
                   />
                 </div>
 
@@ -279,7 +280,7 @@ export default function CatalogClient({
                           width: '100%',
                         }}
                       >
-                        {/* Image wrapper — aspect-ratio aquí define la altura; fill saca la imagen del flujo */}
+                        {/* Image wrapper */}
                         <div
                           className="product-img-wrap"
                           style={{
@@ -288,7 +289,7 @@ export default function CatalogClient({
                             aspectRatio: '1',
                             borderRadius: cardRadius,
                             overflow: 'hidden',
-                            boxShadow: 'inset 0 0 0 1px var(--border)',
+                            boxShadow: 'inset 0 0 0 1px rgba(201,146,42,0.18)',
                           }}
                         >
                           <Image
@@ -302,7 +303,7 @@ export default function CatalogClient({
                           />
 
                           <div className="product-action-btn" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
                             </svg>
                           </div>
@@ -323,8 +324,8 @@ export default function CatalogClient({
                               <h3 style={{
                                 fontFamily: 'var(--font-cormorant)',
                                 fontSize: '1.25rem',
-                                fontWeight: 600,
-                                color: 'var(--foreground)',
+                                fontWeight: 500,
+                                color: '#f4f0e8',
                                 lineHeight: 1.2,
                                 letterSpacing: '-0.01em',
                                 marginBottom: '0.375rem',
@@ -340,7 +341,7 @@ export default function CatalogClient({
                                   fontSize: '0.8125rem',
                                   fontWeight: 300,
                                   lineHeight: 1.65,
-                                  color: 'var(--muted-foreground)',
+                                  color: 'rgba(244,240,232,0.42)',
                                   display: '-webkit-box',
                                   WebkitLineClamp: 2,
                                   WebkitBoxOrient: 'vertical',
@@ -355,8 +356,8 @@ export default function CatalogClient({
                               <span style={{
                                 fontFamily: 'var(--font-cormorant)',
                                 fontSize: '1.25rem',
-                                fontWeight: 600,
-                                color: 'var(--foreground)',
+                                fontWeight: 500,
+                                color: '#c9922a',
                                 letterSpacing: '-0.01em',
                                 flexShrink: 0,
                                 lineHeight: 1.2,
@@ -366,7 +367,7 @@ export default function CatalogClient({
                             )}
                           </div>
 
-                          {/* Lista de opciones — reemplaza al precio base */}
+                          {/* Lista de opciones */}
                           {hasOptions && (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                               {activeOptions.map((opt) => (
@@ -384,7 +385,7 @@ export default function CatalogClient({
                                     fontFamily: 'var(--font-inter)',
                                     fontSize: '0.75rem',
                                     fontWeight: 300,
-                                    color: 'var(--muted-foreground)',
+                                    color: 'rgba(244,240,232,0.42)',
                                     lineHeight: 1.4,
                                     wordBreak: 'break-word',
                                   }}>
@@ -394,7 +395,7 @@ export default function CatalogClient({
                                     fontFamily: 'var(--font-cormorant)',
                                     fontSize: '0.9375rem',
                                     fontWeight: 500,
-                                    color: 'var(--wood)',
+                                    color: '#c9922a',
                                     letterSpacing: '-0.01em',
                                     flexShrink: 0,
                                   }}>
@@ -420,8 +421,8 @@ export default function CatalogClient({
                           justifyContent: 'space-between',
                           gap: '2rem',
                           padding: '1.375rem 0',
-                          borderTop: '1px solid var(--border)',
-                          borderBottom: nextHasImage ? '1px solid var(--border)' : undefined,
+                          borderTop: '1px solid rgba(201,146,42,0.16)',
+                          borderBottom: nextHasImage ? '1px solid rgba(201,146,42,0.16)' : undefined,
                         }}
                       >
                         {/* Izquierda: nombre + descripción */}
@@ -432,7 +433,7 @@ export default function CatalogClient({
                               fontFamily: 'var(--font-cormorant)',
                               fontSize: 'clamp(1.25rem, 2vw, 1.5rem)',
                               fontWeight: 400,
-                              color: 'var(--foreground)',
+                              color: '#f4f0e8',
                               lineHeight: 1.2,
                               letterSpacing: '-0.015em',
                               marginBottom: product.description ? '0.3rem' : 0,
@@ -451,7 +452,7 @@ export default function CatalogClient({
                               fontSize: '0.8rem',
                               fontWeight: 300,
                               lineHeight: 1.5,
-                              color: 'var(--muted-foreground)',
+                              color: 'rgba(244,240,232,0.38)',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
                               whiteSpace: 'nowrap',
@@ -461,7 +462,7 @@ export default function CatalogClient({
                           )}
                         </div>
 
-                        {/* Derecha: precio base o lista de opciones */}
+                        {/* Derecha: precio o lista de opciones */}
                         {hasOptions ? (
                           <div style={{
                             flexShrink: 0,
@@ -483,7 +484,7 @@ export default function CatalogClient({
                                   fontFamily: 'var(--font-inter)',
                                   fontSize: '0.75rem',
                                   fontWeight: 300,
-                                  color: 'var(--muted-foreground)',
+                                  color: 'rgba(244,240,232,0.38)',
                                   lineHeight: 1.4,
                                 }}>
                                   {opt.name}
@@ -492,7 +493,7 @@ export default function CatalogClient({
                                   fontFamily: 'var(--font-cormorant)',
                                   fontSize: 'clamp(1rem, 1.6vw, 1.25rem)',
                                   fontWeight: 500,
-                                  color: 'var(--wood)',
+                                  color: '#c9922a',
                                   letterSpacing: '-0.01em',
                                 }}>
                                   {formatMXN(opt.price)}
@@ -505,7 +506,7 @@ export default function CatalogClient({
                             fontFamily: 'var(--font-cormorant)',
                             fontSize: 'clamp(1.125rem, 1.8vw, 1.375rem)',
                             fontWeight: 500,
-                            color: 'var(--wood)',
+                            color: '#c9922a',
                             letterSpacing: '-0.01em',
                             flexShrink: 0,
                             lineHeight: 1.2,
@@ -527,7 +528,6 @@ export default function CatalogClient({
 
       {/* ── FAB del carrito ── */}
       {hasCart && (() => {
-        // Calcular totales cruzando IDs del store con productos frescos
         const productMap = new Map(products.map((p) => [p.id, p]))
         let fabQty = 0
         let fabPrice = 0
@@ -558,36 +558,36 @@ export default function CatalogClient({
               left: '50%',
               transform: 'translateX(-50%)',
               zIndex: 999,
-              background: 'var(--foreground)',
-              color: 'var(--background)',
+              background: '#c9922a',
+              color: '#0b0a08',
               border: 'none',
-              borderRadius: '9999px',
+              borderRadius: '4px',
               padding: '0.875rem 1.5rem',
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.9375rem',
+              fontSize: '0.875rem',
               fontWeight: 500,
-              letterSpacing: '0.01em',
+              letterSpacing: '0.04em',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 4px 24px rgba(10, 10, 40, 0.22)',
+              gap: '0.625rem',
+              boxShadow: '0 8px 32px rgba(201,146,42,0.30)',
               whiteSpace: 'nowrap',
             }}
           >
             <span>Ver carrito</span>
             <span style={{
-              background: 'var(--wood)',
-              color: '#fff',
-              borderRadius: '9999px',
-              padding: '0.125rem 0.5rem',
+              background: 'rgba(0,0,0,0.18)',
+              color: '#0b0a08',
+              borderRadius: '3px',
+              padding: '0.125rem 0.4375rem',
               fontSize: '0.75rem',
               fontWeight: 600,
               lineHeight: 1.5,
             }}>
               {fabQty}
             </span>
-            <span style={{ opacity: 0.35 }}>•</span>
+            <span style={{ opacity: 0.4 }}>·</span>
             <span style={{
               fontFamily: 'var(--font-cormorant)',
               fontSize: '1.125rem',
@@ -623,12 +623,10 @@ export default function CatalogClient({
         @media (max-width: 480px) {
           .catalog-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 2rem 0 !important; }
         }
-        /* Editorial menu entry hover */
         .product-entry:hover .product-entry-name {
-          color: var(--wood);
+          color: #c9922a !important;
         }
-        /* FAB */
-        .cart-fab:hover { opacity: 0.88; }
+        .cart-fab:hover { opacity: 0.90; }
         @media (min-width: 768px) {
           .cart-fab {
             left: auto !important;

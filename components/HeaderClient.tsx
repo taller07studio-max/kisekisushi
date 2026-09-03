@@ -54,10 +54,10 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
     }
   }
 
-  // Color tokens: solid background when scrolled, transparent on hero
-  const solidBg   = 'oklch(0.10 0.020 255 / 0.97)'
-  const textColor  = scrolled ? 'oklch(0.88 0.008 80)' : 'rgba(255,255,255,0.85)'
-  const borderColor = scrolled ? 'oklch(1 0 0 / 0.08)' : 'rgba(255,255,255,0.12)'
+  const solidBg    = 'rgba(11,10,8,0.96)'
+  const textIvory  = scrolled ? 'rgba(244,240,232,0.85)' : 'rgba(255,255,255,0.82)'
+  const goldColor  = '#c9922a'
+  const borderGold = scrolled ? 'rgba(201,146,42,0.18)' : 'rgba(201,146,42,0.10)'
 
   return (
     <header
@@ -69,9 +69,9 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
         zIndex: 1000,
         transition: 'background-color 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease',
         backgroundColor: scrolled ? solidBg : 'transparent',
-        borderBottom: scrolled ? '1px solid oklch(1 0 0 / 0.08)' : '1px solid transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: `1px solid ${borderGold}`,
+        backdropFilter: scrolled ? 'blur(24px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(24px)' : 'none',
       }}
     >
       {/* ── Row 1: Logo + Desktop Nav ── */}
@@ -80,7 +80,7 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
           maxWidth: '1280px',
           margin: '0 auto',
           padding: '0 2rem',
-          height: '64px',
+          height: '60px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -105,10 +105,10 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
               alt=""
               aria-hidden="true"
               style={{
-                height: '40px',
-                width: '40px',
+                height: '36px',
+                width: '36px',
                 objectFit: 'cover',
-                borderRadius: '8px',
+                borderRadius: '4px',
                 flexShrink: 0,
               }}
             />
@@ -117,10 +117,10 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
             <span
               style={{
                 fontFamily: 'var(--font-cormorant)',
-                fontSize: '1.125rem',
+                fontSize: '1.1875rem',
                 fontWeight: 500,
-                letterSpacing: '-0.01em',
-                color: '#ffffff',
+                letterSpacing: '0.03em',
+                color: '#f4f0e8',
                 transition: 'opacity 0.4s ease',
                 lineHeight: 1,
                 overflow: 'hidden',
@@ -133,16 +133,16 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
             <span
               style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.5625rem',
-                fontWeight: 500,
-                letterSpacing: '0.22em',
+                fontSize: '0.5rem',
+                fontWeight: 400,
+                letterSpacing: '0.28em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.6)',
-                marginTop: '0.2rem',
+                color: 'rgba(201,146,42,0.65)',
+                marginTop: '0.25rem',
                 lineHeight: 1,
               }}
             >
-              Mariscos
+              Sushi
             </span>
           </span>
         </a>
@@ -177,29 +177,29 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
                     cursor: 'pointer',
                     padding: '0.5rem 0.875rem',
                     fontFamily: 'var(--font-inter)',
-                    fontSize: '0.75rem',
+                    fontSize: '0.6875rem',
                     fontWeight: 400,
-                    letterSpacing: '0.09em',
+                    letterSpacing: '0.14em',
                     textTransform: 'uppercase',
-                    color: textColor,
-                    transition: 'color 0.25s ease',
+                    color: textIvory,
+                    transition: 'color 0.22s ease',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.3rem',
                     whiteSpace: 'nowrap',
                   }}
                   onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--wood)'
+                    ;(e.currentTarget as HTMLButtonElement).style.color = goldColor
                   }}
                   onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLButtonElement).style.color = textColor
+                    ;(e.currentTarget as HTMLButtonElement).style.color = textIvory
                   }}
                 >
                   {cat.name}
                   {hasSubs && (
                     <svg
-                      width="8"
-                      height="8"
+                      width="7"
+                      height="7"
                       viewBox="0 0 8 8"
                       fill="currentColor"
                       aria-hidden="true"
@@ -226,14 +226,14 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
                       left: '50%',
                       transform: 'translateX(-50%)',
                       minWidth: '200px',
-                      background: 'oklch(0.10 0.02 255 / 0.98)',
-                      border: '1px solid oklch(1 0 0 / 0.10)',
-                      borderRadius: 'calc(var(--radius) * 0.8)',
-                      boxShadow: '0 20px 56px rgba(0,0,0,0.4)',
+                      background: 'rgba(11,10,8,0.98)',
+                      border: '1px solid rgba(201,146,42,0.22)',
+                      borderRadius: '6px',
+                      boxShadow: '0 24px 60px rgba(0,0,0,0.6)',
                       padding: '0.375rem',
                       animation: 'hdrDropdown 0.15s ease-out both',
                       zIndex: 50,
-                      backdropFilter: 'blur(12px)',
+                      backdropFilter: 'blur(16px)',
                     }}
                   >
                     {cat.subcategories.map((sub) => (
@@ -253,24 +253,24 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
                           padding: '0.55rem 0.875rem',
                           background: 'none',
                           border: 'none',
-                          borderRadius: '6px',
+                          borderRadius: '4px',
                           cursor: 'pointer',
                           fontFamily: 'var(--font-inter)',
-                          fontSize: '0.8125rem',
-                          color: 'oklch(0.88 0.008 80)',
+                          fontSize: '0.75rem',
+                          letterSpacing: '0.06em',
+                          color: 'rgba(244,240,232,0.7)',
                           transition: 'background-color 0.12s ease, color 0.12s ease',
                           whiteSpace: 'nowrap',
-                          letterSpacing: '0.02em',
                         }}
                         onMouseEnter={(e) => {
                           const el = e.currentTarget as HTMLButtonElement
-                          el.style.backgroundColor = 'oklch(1 0 0 / 0.06)'
-                          el.style.color = '#ffffff'
+                          el.style.backgroundColor = 'rgba(201,146,42,0.08)'
+                          el.style.color = '#c9922a'
                         }}
                         onMouseLeave={(e) => {
                           const el = e.currentTarget as HTMLButtonElement
                           el.style.backgroundColor = 'transparent'
-                          el.style.color = 'oklch(0.88 0.008 80)'
+                          el.style.color = 'rgba(244,240,232,0.7)'
                         }}
                       >
                         {sub.name}
@@ -289,7 +289,10 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
         className="hdr-mob-cats no-scrollbar"
         role="navigation"
         aria-label="Filtrar por categoría"
-        style={{ borderTop: `1px solid ${borderColor}`, transition: 'border-color 0.5s ease' }}
+        style={{
+          borderTop: `1px solid ${borderGold}`,
+          transition: 'border-color 0.5s ease',
+        }}
       >
         {categories.map((cat) => {
           const isActive = mobileActiveCatId === cat.id
@@ -301,17 +304,17 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
               onClick={() => handleMobileCatClick(cat)}
               style={{
                 flexShrink: 0,
-                padding: '0.5rem 1rem',
-                background: isActive ? 'var(--wood)' : 'transparent',
-                border: 'none',
-                borderRadius: '9999px',
+                padding: '0.4375rem 0.875rem',
+                background: isActive ? 'rgba(201,146,42,0.12)' : 'transparent',
+                border: `1px solid ${isActive ? 'rgba(201,146,42,0.5)' : 'transparent'}`,
+                borderRadius: '3px',
                 cursor: 'pointer',
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.72rem',
-                letterSpacing: '0.07em',
+                fontSize: '0.6875rem',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: isActive ? '#fff' : textColor,
-                transition: 'background-color 0.2s ease, color 0.2s ease',
+                color: isActive ? '#c9922a' : textIvory,
+                transition: 'all 0.18s ease',
                 whiteSpace: 'nowrap',
               }}
             >
@@ -326,7 +329,7 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
         <div
           className="hdr-mob-subs no-scrollbar"
           style={{
-            borderTop: `1px solid ${borderColor}`,
+            borderTop: `1px solid ${borderGold}`,
             transition: 'border-color 0.5s ease',
             animation: 'hdrSubRow 0.18s ease-out both',
           }}
@@ -344,15 +347,15 @@ export default function HeaderClient({ logoUrl, businessName, categories }: Prop
                 }}
                 style={{
                   flexShrink: 0,
-                  padding: '0.375rem 0.75rem',
-                  background: isActive ? 'oklch(0.53 0.19 30 / 0.15)' : 'transparent',
-                  border: `1px solid ${isActive ? 'oklch(0.53 0.19 30 / 0.5)' : borderColor}`,
-                  borderRadius: '9999px',
+                  padding: '0.3125rem 0.6875rem',
+                  background: isActive ? 'rgba(201,146,42,0.08)' : 'transparent',
+                  border: `1px solid ${isActive ? 'rgba(201,146,42,0.4)' : 'rgba(201,146,42,0.12)'}`,
+                  borderRadius: '3px',
                   cursor: 'pointer',
                   fontFamily: 'var(--font-inter)',
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.04em',
-                  color: isActive ? 'var(--wood)' : textColor,
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.06em',
+                  color: isActive ? '#c9922a' : 'rgba(244,240,232,0.55)',
                   transition: 'all 0.15s ease',
                   whiteSpace: 'nowrap',
                 }}

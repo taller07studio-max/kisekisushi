@@ -22,21 +22,44 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        background: [
-          'radial-gradient(ellipse 80% 60% at 50% 100%, oklch(0.22 0.06 240 / 0.6) 0%, transparent 70%)',
-          'linear-gradient(170deg, oklch(0.08 0.04 260) 0%, oklch(0.12 0.05 240) 50%, oklch(0.10 0.06 220) 100%)',
-        ].join(', '),
+        backgroundColor: '#080807',
       }}
     >
-      {/* Radial color accents */}
+      {/* Seigaiha pattern — textura de fondo muy sutil */}
+      <div
+        aria-hidden="true"
+        className="seigaiha-pattern"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          opacity: 0.18,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Gradient overlay — asegura legibilidad */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: [
+            'linear-gradient(to top, rgba(8,8,7,0.96) 0%, rgba(8,8,7,0.55) 55%, rgba(8,8,7,0.15) 100%)',
+            'radial-gradient(ellipse 90% 60% at 50% 100%, rgba(11,10,8,0.7) 0%, transparent 70%)',
+          ].join(', '),
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Dorado radial — acento muy sutil en esquinas */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           backgroundImage: [
-            'radial-gradient(circle at 15% 85%, oklch(0.53 0.19 30 / 0.10) 0%, transparent 50%)',
-            'radial-gradient(circle at 85% 15%, oklch(0.38 0.10 220 / 0.12) 0%, transparent 50%)',
+            'radial-gradient(circle at 85% 12%, rgba(201,146,42,0.06) 0%, transparent 45%)',
+            'radial-gradient(circle at 15% 90%, rgba(205,122,150,0.04) 0%, transparent 40%)',
           ].join(', '),
           pointerEvents: 'none',
         }}
@@ -69,31 +92,29 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.5rem',
-              borderRadius: '9999px',
-              border: '1px solid rgba(255,255,255,0.2)',
-              backgroundColor: 'rgba(255,255,255,0.08)',
+              borderRadius: '3px',
+              border: '1px solid rgba(201,146,42,0.30)',
+              backgroundColor: 'rgba(201,146,42,0.06)',
               padding: '0.375rem 0.875rem',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.6875rem',
-              fontWeight: 600,
-              letterSpacing: '0.18em',
+              fontSize: '0.625rem',
+              fontWeight: 500,
+              letterSpacing: '0.22em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.85)',
+              color: 'rgba(244,240,232,0.75)',
             }}
           >
             <span
               aria-hidden="true"
               style={{
-                width: '6px',
-                height: '6px',
+                width: '5px',
+                height: '5px',
                 borderRadius: '9999px',
-                backgroundColor: 'var(--lime-fresh)',
+                backgroundColor: '#c9922a',
                 flexShrink: 0,
               }}
             />
-            Marisco del día
+            Menú del día
           </span>
 
           {city && (
@@ -104,13 +125,14 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
                 gap: '0.375rem',
                 fontFamily: 'var(--font-inter)',
                 fontSize: '0.75rem',
-                fontWeight: 500,
-                color: 'rgba(255,255,255,0.65)',
+                fontWeight: 400,
+                color: 'rgba(244,240,232,0.5)',
+                letterSpacing: '0.04em',
               }}
             >
               <svg
-                width="14"
-                height="14"
+                width="12"
+                height="12"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -127,35 +149,47 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
           )}
         </div>
 
+        {/* Línea decorativa dorada */}
+        <div
+          aria-hidden="true"
+          style={{
+            width: '2.5rem',
+            height: '1px',
+            backgroundColor: 'rgba(201,146,42,0.55)',
+            marginBottom: '1.5rem',
+          }}
+        />
+
         {/* Main headline */}
         <h1
           className="hero-title"
           style={{
             fontFamily: 'var(--font-cormorant)',
-            fontSize: 'clamp(3.25rem, 11vw, 9.5rem)',
+            fontSize: 'clamp(3.5rem, 12vw, 10rem)',
             fontWeight: 300,
-            lineHeight: 0.9,
-            color: '#ffffff',
-            letterSpacing: '-0.03em',
-            marginBottom: '1.75rem',
+            lineHeight: 0.88,
+            color: '#f4f0e8',
+            letterSpacing: '-0.02em',
+            marginBottom: '1.875rem',
           }}
         >
           {businessName}
         </h1>
 
         {/* Description */}
-        <div className="hero-subtitle" style={{ maxWidth: '560px', marginBottom: '2rem' }}>
+        <div className="hero-subtitle" style={{ maxWidth: '520px', marginBottom: '2.25rem' }}>
           <p
             style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: 'clamp(0.875rem, 1.4vw, 1.0625rem)',
+              fontSize: 'clamp(0.875rem, 1.4vw, 1rem)',
               fontWeight: 300,
-              lineHeight: 1.75,
-              color: 'rgba(255,255,255,0.72)',
+              lineHeight: 1.8,
+              color: 'rgba(244,240,232,0.62)',
               margin: 0,
+              letterSpacing: '0.01em',
             }}
           >
-            {description ?? 'Del Pacífico a tu mesa. Frescura, tradición y sabor sinaloense.'}
+            {description ?? 'Arte japonés en cada pieza. Ingredientes frescos, técnica precisa y sabor que perdura.'}
           </p>
         </div>
 
@@ -164,7 +198,7 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
           className="hero-cta"
           style={{
             display: 'flex',
-            gap: '0.75rem',
+            gap: '0.875rem',
             flexWrap: 'wrap',
             alignItems: 'center',
             marginBottom: '3rem',
@@ -174,18 +208,18 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
             href="#catalogo"
             style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.8125rem',
-              fontWeight: 600,
-              letterSpacing: '0.04em',
-              color: 'oklch(0.10 0.02 255)',
-              backgroundColor: '#ffffff',
-              padding: '1rem 1.875rem',
-              borderRadius: '9999px',
+              fontSize: '0.75rem',
+              fontWeight: 500,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#0b0a08',
+              backgroundColor: '#c9922a',
+              padding: '0.9375rem 2rem',
+              borderRadius: '4px',
               textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
-              boxShadow: '0 8px 32px rgba(10,10,40,0.25)',
-              transition: 'transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease',
+              transition: 'background-color 0.25s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1)',
             }}
           >
             Ver el Menú
@@ -203,25 +237,26 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-            gap: '1.25rem 1.5rem',
+            gap: '1.25rem 1.75rem',
             paddingTop: '1.75rem',
-            borderTop: '1px solid rgba(255,255,255,0.12)',
+            borderTop: '1px solid rgba(201,146,42,0.18)',
           }}
         >
           {([
-            { value: 'Fresco', label: 'Cada día' },
-            { value: 'Sinaloa', label: 'Estilo auténtico' },
-            { value: '6 a.m.', label: 'Llega el marisco' },
-            { value: 'Pacífico', label: 'Origen del camarón' },
+            { value: 'Artesanal', label: 'Cada pieza' },
+            { value: 'Premium', label: 'Ingredientes frescos' },
+            { value: 'Kiseki', label: 'Experiencia única' },
+            { value: 'Tradicional', label: 'Técnica japonesa' },
           ] as const).map((stat) => (
             <div key={stat.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
               <dt
                 style={{
                   fontFamily: 'var(--font-cormorant)',
-                  fontSize: 'clamp(1.25rem, 2.5vw, 1.625rem)',
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                   fontWeight: 500,
                   lineHeight: 1,
-                  color: '#ffffff',
+                  color: '#f4f0e8',
+                  letterSpacing: '0.01em',
                 }}
               >
                 {stat.value}
@@ -229,11 +264,11 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
               <dd
                 style={{
                   fontFamily: 'var(--font-inter)',
-                  fontSize: '0.6875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.14em',
+                  fontSize: '0.625rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.16em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.45)',
+                  color: 'rgba(201,146,42,0.6)',
                   margin: 0,
                 }}
               >
@@ -252,7 +287,7 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
           flexDirection: 'column',
           alignItems: 'center',
           gap: '0.625rem',
-          color: 'rgba(255,255,255,0.28)',
+          color: 'rgba(201,146,42,0.3)',
           zIndex: 10,
         }}
       >
@@ -261,14 +296,14 @@ export default function Hero({ businessWhatsapp, branches, businessName, descrip
           style={{
             width: '1px',
             height: '36px',
-            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.28))',
+            background: 'linear-gradient(to bottom, transparent, rgba(201,146,42,0.35))',
           }}
         />
         <span
           style={{
             fontFamily: 'var(--font-inter)',
-            fontSize: '0.575rem',
-            letterSpacing: '0.3em',
+            fontSize: '0.5rem',
+            letterSpacing: '0.32em',
             textTransform: 'uppercase',
           }}
         >

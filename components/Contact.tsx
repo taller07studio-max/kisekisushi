@@ -21,33 +21,55 @@ export default function Contact({ businessWhatsapp, branches, city, businessName
         overflow: 'hidden',
       }}
     >
-      {/* Decorative radial glow — coral */}
+      {/* Seigaiha pattern — textura de fondo */}
       <div
         aria-hidden="true"
+        className="seigaiha-pattern"
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '700px',
-          height: '700px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, oklch(0.53 0.19 30 / 0.08) 0%, transparent 65%)',
+          inset: 0,
+          opacity: 0.14,
           pointerEvents: 'none',
         }}
       />
 
-      {/* Decorative ring */}
+      {/* Gradiente central — asegura legibilidad */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '-15%',
-          right: '-10%',
-          width: '560px',
-          height: '560px',
-          borderRadius: '50%',
-          border: '1px solid oklch(1 0 0 / 0.04)',
+          inset: 0,
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(8,8,7,0.85) 0%, transparent 80%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Marco decorativo dorado — esquina superior derecha */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '3rem',
+          right: '3rem',
+          width: '80px',
+          height: '80px',
+          borderTop: '1px solid rgba(201,146,42,0.22)',
+          borderRight: '1px solid rgba(201,146,42,0.22)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Marco decorativo dorado — esquina inferior izquierda */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          bottom: '3rem',
+          left: '3rem',
+          width: '80px',
+          height: '80px',
+          borderBottom: '1px solid rgba(201,146,42,0.22)',
+          borderLeft: '1px solid rgba(201,146,42,0.22)',
           pointerEvents: 'none',
         }}
       />
@@ -67,15 +89,15 @@ export default function Contact({ businessWhatsapp, branches, city, businessName
             className="reveal"
             style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: '0.675rem',
+              fontSize: '0.5625rem',
               fontWeight: 400,
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: 'var(--wood)',
+              color: '#c9922a',
               marginBottom: '1.75rem',
             }}
           >
-            — Visítanos
+            — Contáctanos
           </p>
 
           {/* Headline */}
@@ -86,19 +108,19 @@ export default function Contact({ businessWhatsapp, branches, city, businessName
               fontSize: 'clamp(2.75rem, 6vw, 4.5rem)',
               fontWeight: 300,
               lineHeight: 1.05,
-              color: '#ffffff',
+              color: '#f4f0e8',
               letterSpacing: '-0.025em',
               marginBottom: '1.5rem',
             }}
           >
-            ¿Qué se te{' '}
+            ¿Listo para{' '}
             <em
               style={{
                 fontStyle: 'italic',
-                color: 'var(--wood)',
+                color: '#c9922a',
               }}
             >
-              antoja hoy?
+              ordenar?
             </em>
           </h2>
 
@@ -110,13 +132,13 @@ export default function Contact({ businessWhatsapp, branches, city, businessName
               fontSize: 'clamp(0.875rem, 1.4vw, 1rem)',
               fontWeight: 300,
               lineHeight: 1.9,
-              color: 'oklch(1 0 0 / 0.5)',
+              color: 'rgba(244,240,232,0.42)',
               maxWidth: '440px',
               margin: '0 auto 3rem',
             }}
           >
-            Escríbenos por WhatsApp para preguntar por el menú del día,
-            reservar tu mesa o simplemente porque el antojo ya llegó.
+            Escríbenos por WhatsApp para hacer tu pedido,
+            preguntar por el menú del día o reservar tu lugar.
           </p>
 
           {/* WhatsApp button */}
@@ -134,13 +156,14 @@ export default function Contact({ businessWhatsapp, branches, city, businessName
               className="reveal reveal-delay-4"
               style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: '0.8rem',
+                fontSize: '0.75rem',
                 fontWeight: 300,
-                letterSpacing: '0.1em',
-                color: 'oklch(1 0 0 / 0.28)',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'rgba(201,146,42,0.30)',
               }}
             >
-              {city}, Sinaloa · México
+              {city}
             </p>
           )}
         </RevealOnScroll>

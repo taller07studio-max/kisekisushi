@@ -14,44 +14,58 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Extended palette */
-  --color-lime-fresh: var(--lime-fresh);
-  --color-accent:     var(--wood);
+  --color-gold:   var(--brand-gold);
+  --color-accent: var(--brand-gold);
 }
 
-/* === PALETA — El Imposible · Mariscos Sinaloa === */
+/* === PALETA — Kiseki Sushi · Japanese contemporary dark === */
 :root {
-  /* Base */
-  --background:         oklch(0.97 0.012 80);    /* arena cálida */
-  --foreground:         oklch(0.10 0.020 255);   /* midnight oceánico */
-  --primary:            oklch(0.10 0.020 255);
-  --primary-foreground: oklch(0.97 0.012 80);
+  /* ── Backgrounds ── */
+  --background:         #0b0a08;   /* negro profundo cálido */
+  --surface:            #131209;   /* carbón oscuro */
+  --surface-elevated:   #1c1a14;   /* carbón elevado */
 
-  /* Superficies */
-  --muted:              oklch(0.93 0.008 80);    /* arena suave */
-  --muted-foreground:   oklch(0.50 0.012 240);   /* gris-azulado */
-  --border:             oklch(0.88 0.008 80);    /* borde cálido */
+  /* ── Texto ── */
+  --foreground:         #f4f0e8;   /* ivory cálido */
+  --muted-foreground:   rgba(244,240,232,0.46);
 
-  /* Acento principal — coral chile rojo (camarón fresco, atardecer Pacífico) */
-  --wood:               oklch(0.53 0.19 30);     /* refinado: más profundo */
-  --wood-deep:          oklch(0.40 0.17 28);
-  --accent-foreground:  oklch(0.98 0.01 80);     /* texto sobre acento */
+  /* ── Dorado ── */
+  --brand-gold:         #c9922a;
+  --brand-gold-light:   #e2b958;
+  --brand-gold-muted:   rgba(201,146,42,0.28);
 
-  /* Acento secundario — océano profundo */
-  --foliage:            oklch(0.38 0.10 220);
+  /* ── Sakura — solo como detalle ── */
+  --brand-sakura:       #cd7a96;
+  --brand-sakura-light: #e8aec2;
 
-  /* Acento terciario — lima fresca (Pacific lime) */
-  --lime-fresh:         oklch(0.76 0.17 128);
+  /* ── Ivory ── */
+  --brand-ivory:        #f4f0e8;
+
+  /* ── Tokens funcionales (mantienen nombres usados en componentes) ── */
+  --primary:            #c9922a;
+  --primary-foreground: #0b0a08;
+
+  --muted:              #1c1a14;
+  --border:             rgba(201,146,42,0.22);
+
+  /* --wood → dorado (renombrado conceptualmente, preservado para compatibilidad) */
+  --wood:               #c9922a;
+  --wood-deep:          #9a6e1e;
+  --accent-foreground:  #0b0a08;
+
+  /* --lime-fresh redirigido a gold (ContactWaButton, FooterWaButton, waPulse) */
+  --lime-fresh:         #c9922a;
 
   /* Terciarios */
-  --blush:              oklch(0.93 0.06 25);
-  --cream:              oklch(0.97 0.012 80);
+  --blush:              rgba(205,122,150,0.10);
+  --cream:              #f4f0e8;
 
-  /* Fondos de sección oscuros */
-  --section-dark:       oklch(0.10 0.040 250);   /* midnight deep */
-  --section-mid:        oklch(0.93 0.008 80);    /* arena muted */
+  /* ── Secciones ── */
+  --section-dark:       #080807;
+  --section-mid:        #0f0e0c;
 
-  /* Global radius token */
-  --radius:             1.25rem;
+  /* ── Radius — más ajustado, japonés ── */
+  --radius: 0.375rem;
 }
 
 /* ─── Base ─── */
@@ -67,15 +81,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Grain texture overlay ─── */
+/* ─── Grain texture — muy reducida para no competir con Seigaiha ─── */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.022;
+  opacity: 0.010;
   pointer-events: none;
   z-index: 9998;
+}
+
+/* ─── Seigaiha pattern utility ─── */
+.seigaiha-pattern {
+  background-image: url('/patterns/seigaiha.svg');
+  background-repeat: repeat;
+  background-size: 60px 60px;
 }
 
 /* ─── Scrollbar hide utility ─── */
@@ -149,10 +170,10 @@ body::after {
   animation-delay: 2s;
 }
 
-/* ─── WhatsApp pulse (coral) ─── */
+/* ─── WhatsApp pulse — dorado ─── */
 @keyframes waPulse {
-  0%, 100% { box-shadow: 0 8px 32px oklch(0.76 0.17 128 / 0.3), 0 0 0 0 oklch(0.76 0.17 128 / 0.35); }
-  50%       { box-shadow: 0 8px 32px oklch(0.76 0.17 128 / 0.3), 0 0 0 14px oklch(0.76 0.17 128 / 0); }
+  0%, 100% { box-shadow: 0 8px 32px rgba(201,146,42,0.25), 0 0 0 0 rgba(201,146,42,0.30); }
+  50%       { box-shadow: 0 8px 32px rgba(201,146,42,0.25), 0 0 0 14px rgba(201,146,42,0); }
 }
 
 .wa-pulse {
@@ -172,17 +193,16 @@ body::after {
 }
 
 .product-card:hover .product-img-wrap {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(10, 10, 40, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
 }
 
 .product-card .product-img {
-  /* fill + object-cover son manejados por next/image — solo animación */
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .product-card:hover .product-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* ─── Product card action button (+) ─── */
@@ -190,29 +210,29 @@ body::after {
   position: absolute;
   bottom: 0.875rem;
   right: 0.875rem;
-  width: 2.625rem;
-  height: 2.625rem;
-  border-radius: 9999px;
-  background-color: var(--background);
-  color: var(--foreground);
-  border: none;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 4px;
+  background-color: rgba(201,146,42,0.10);
+  color: rgba(201,146,42,0.6);
+  border: 1px solid rgba(201,146,42,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(10, 10, 40, 0.14);
-  transition: background-color 0.28s ease, color 0.28s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  pointer-events: none; /* card is the click target */
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .product-card:hover .product-action-btn {
-  background-color: var(--wood);
-  color: var(--accent-foreground);
+  background-color: var(--brand-gold);
+  color: #0b0a08;
+  border-color: var(--brand-gold);
   transform: rotate(90deg);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: oklch(0.53 0.19 30 / 0.18);
+  background-color: rgba(201,146,42,0.18);
   color: var(--foreground);
 }
